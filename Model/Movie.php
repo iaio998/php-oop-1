@@ -17,12 +17,21 @@ class Movie
         $this->poster_path = $lang;
         $this->origial_language = $img;
     }
-
+    public function getVote()
+    {
+        $vote = ceil($this->vote_average / 2);
+        $template = "<p>";
+        for ($n = 1; $n <= 5; $n++) {
+            $template .= $n <= $vote ? '<i class="fa-solid fa-star text-warning"></i>' : '<i class="fa-regular fa-star text-danger"></i>';
+        }
+        $template .= '</p>';
+        return $template;
+    }
     public function printCard()
     {
         $title = $this->title;
         $content = $this->overview;
-        $custom = $this->vote_average;
+        $custom = $this->getVote();
         $image = $this->poster_path;
         include __DIR__ . "/../Views/card.php";
     }
