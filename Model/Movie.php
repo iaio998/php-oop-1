@@ -33,7 +33,7 @@ class Movie
     public function printCard()
     {
         $title = $this->title;
-        $content = $this->overview;
+        $content = substr($this->overview, 0, 100) . "...";
         $custom = $this->getVote();
         $image = $this->poster_path;
         $genre = $this->genre->name;
@@ -46,13 +46,13 @@ $movies = [];
 $genreString = file_get_contents(__DIR__ . '/genre_db.json');
 $genreList = json_decode($genreString, true);
 $genres = [];
-foreach ($genreList as $key => $value) {
-    $genres[] = new Genre($value[$key]);
+foreach ($genreList as $item) {
+    $genres[] = new Genre($item);
 }
 $action = new Genre('Action');
 foreach ($movieList as $item) {
     $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $item['original_language'], $genres[rand(0, count($genres) - 1)]);
 }
 // var_dump($movies[0]);
-var_dump($genreList);
+// var_dump($genreList);
 ?>

@@ -6,7 +6,7 @@ include __DIR__ . "/Model/Movie.php"
 <main>
     <div class="container">
         <section>Sezione</section>
-        <div class="row ">
+        <div class="row gy-3">
             <?php foreach ($movies as $movie) {
                 $movie->printCard();
             } ?>

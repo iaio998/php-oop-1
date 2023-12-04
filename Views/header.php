@@ -18,7 +18,7 @@
     <title>OOP SHOP</title>
 </head>
 
-<body>
+<body class="bg-primary-subtle">
 
     <header>
         <div class="container">
