@@ -18,6 +18,15 @@ class Movie
         $this->origial_language = $img;
     }
 
+    public function printCard()
+    {
+        $title = $this->title;
+        $content = $this->overview;
+        $custom = $this->vote_average;
+        $image = $this->poster_path;
+        include __DIR__ . "/../Views/card.php";
+    }
+
 }
 $movieString = file_get_contents(__DIR__ . '/movie_db.json');
 $movieList = json_decode($movieString, true);
@@ -25,5 +34,5 @@ $movies = [];
 foreach ($movieList as $item) {
     $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $item['original_language']);
 }
-var_dump($movies[0]);
+// var_dump($movies[0]);
 ?>
